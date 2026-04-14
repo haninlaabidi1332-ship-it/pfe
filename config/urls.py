@@ -42,6 +42,12 @@ urlpatterns = [
     
     # Users App - Gestion des utilisateurs OLT Supervision
     path('api/users/', include('apps.users.urls')),
+    path('api/inventory/', include('apps.olt_inventory.urls')),
+    path('api/v1/monitoring/', include('apps.olt_monitoring.urls')),
+    path('api/v1/analytics/', include('apps.olt_analytics.urls')),
+    path('api/v1/alerts/', include('apps.olt_alerts.urls')),
+    path('api/v1/dashboard/', include('apps.olt_dashboard.urls')),
+    path('api/v1/api/', include('apps.olt_api.urls'))
 ]
 
 if settings.DEBUG:

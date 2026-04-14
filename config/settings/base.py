@@ -45,12 +45,12 @@ THIRD_PARTY_APPS = [
 LOCAL_APPS = [
     'apps.core',
     'apps.users',
-    # 'apps.olt_inventory',
-    # 'apps.olt_monitoring',
-    # 'apps.olt_analytics',
-    # 'apps.olt_alerts',
-    # 'apps.olt_dashboard',
-    # 'apps.olt_api',
+    'apps.olt_inventory',
+    'apps.olt_monitoring',
+    'apps.olt_analytics',
+    'apps.olt_alerts',
+    'apps.olt_dashboard',
+    'apps.olt_api',
 ]
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
@@ -341,3 +341,4 @@ ML_RETRAIN_FREQUENCY_HOURS = env.int("ML_RETRAIN_FREQUENCY_HOURS", default=24)
 LOG_LEVEL = env("LOG_LEVEL", default="INFO")
 LOG_FILE = BASE_DIR / "logs" / "olt_supervision.log"
 
+AUTH_USER_MODEL = 'users.User'

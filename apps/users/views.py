@@ -61,6 +61,11 @@ class UserViewSet(viewsets.ModelViewSet):
             return UserCreateSerializer
         elif self.action == 'me':
             return UserDetailSerializer
+        if self.action in ['list', 'accounts', None]:
+            return UserListSerializer
+        # Si on est sur l'URL d'un utilisateur précis /api/users/1/
+        if self.action in ['retrieve', 'update', 'partial_update']:
+            return UserDetailSerializer
         elif self.action == 'minimal_list':
             return UserMinimalSerializer
         elif self.action in ['update', 'partial_update']:
@@ -336,7 +341,13 @@ class UserViewSet(viewsets.ModelViewSet):
             UserDetailSerializer(user).data,
             f"Statut utilisateur mis à jour : {new_status}"
         )
+    @action(detail=False, methods=['get'], url_path='accounts')
+    def accounts(self, request):
+        queryset = self.get_queryset()
+        serializer = UserListSerializer(queryset, many=True)
+        return Response(serializer.data)
     
+
     @action(detail=True, methods=['post'], permission_classes=[IsAuthenticated, IsAdmin])
     def toggle_api_access(self, request, pk=None):
         """
