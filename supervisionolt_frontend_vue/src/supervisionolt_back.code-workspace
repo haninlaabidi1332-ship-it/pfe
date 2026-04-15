@@ -1,0 +1,11 @@
+{
+	"folders": [
+		{
+			"path": "../../supervisionolt_backend_django"
+		},
+		{
+			"path": ".."
+		}
+	],
+	"settings": {}
+}
