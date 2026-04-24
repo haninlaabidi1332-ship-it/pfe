@@ -1,3 +1,4 @@
 from django.contrib import admin
+from .models import Device # Ou le nom de ta classe d'équipement
 
-# Register your models here.
+admin.site.register(Device)
